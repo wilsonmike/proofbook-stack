@@ -80,8 +80,37 @@ const roomSchema = new mongoose.Schema({
             ],
             message: 'Please select correct category for room'
         }
+    },
+    reviews: [
+        {
+            user: {
+                type: mongoose.Schema.ObjectId,
+                ref: 'User',
+                required: true
+            },
+            name: {
+                type: String,
+                required: true
+            },
+            rating: {
+                type: Number,
+                required: true
+            },
+            comment: {
+                type: String,
+                required: true
+            },
+        }
+    ],
+    user: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'User',
+        required: true
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now
     }
-
 })
 
 export default mongoose.model.Room || mongoose.model('Room', roomSchema);
