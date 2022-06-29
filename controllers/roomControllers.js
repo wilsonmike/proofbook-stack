@@ -5,9 +5,9 @@ const allRooms = async (req, res) => {
         const rooms = await Room.find()
         res.status(200).json({
             success: true,
+            count: rooms.length,
             rooms
         })
-
     } catch (error) {
         res.status(400).json({
             success: false,
